@@ -1,0 +1,102 @@
+----------------------------ContentView.swift--------------------------------------
+
+import SwiftUI
+
+struct ContentView: View {
+    
+    var countryController = Countrycontroller()
+    
+    var body: some View {
+	NavigationView{
+ 	       List(countryController.countries) { country in
+ 	           NavigationLInk(destination: DetailView(country: country)){
+			Text(country.name)
+			}
+ 	       }
+		.navigationBarTitle("Countries",displayMode: .inline)
+	}
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+
+struct DetailView: View {
+	var body: some View {
+		Text("Country")
+	}
+}
+
+----------------------------CountryModel.swift--------------------------------------
+import Foundation
+
+struct CountryModel: Identifiable, Hashable{
+
+	var id: UUID 			// Object Identifier, Unique identifier
+	var name: String
+	var population: String
+
+	func hash(into hasher: inout Hasher){
+		hasher.combine(id)
+	}
+}
+
+
+----------------------------CountryController.swift----------------------------------
+import Foundation
+
+class CountryController{
+
+	//Create a variable(array) which will hold the data for the list
+	var countries: [CountryModel]
+
+	init(){
+		Putting an object into the array
+		self.countries = [
+			CountryModel(id: UUID(), name: "Mexico", population: "127M"),
+			CountryModel(id: UUID(), name: "Canada", population: "37M"),
+			CountryModel(id: UUID(), name: "France", population: "67M"),
+			CountryModel(id: UUID(), name: "Italy", population: "60M"),
+			CountryModel(id: UUID(), name: "China", population: "1388M"),
+		]	
+	}	
+}
+
+
+----------------------------DetailView.swift----------------------------------
+import SwiftUI
+
+struct DetailView: View {
+	let ountry: CountryModel
+	var body: spme View{
+		Text(country.name + "->" + country.population)
+	}
+	
+struct Detailview_Preview_Previews: PreviewProvider{
+	static var preiews: some View{
+		DetailView(country: CountryModel
+	}
+}	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
