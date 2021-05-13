@@ -73,14 +73,14 @@ struct DetailView: View {
 	let ountry: CountryModel
 	var body: spme View{
 		Text(country.name + "->" + country.population)
-	}
+}
 	
 struct Detailview_Preview_Previews: PreviewProvider{
 	static var preiews: some View{
-		DetailView(country: CountryModel
-	}
-}	
+		DetailView(country: CountryModel(id: UUID(), name: "qwert", population: "000000"))
+	}	
 }
+
 
 
 
